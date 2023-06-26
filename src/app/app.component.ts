@@ -13,6 +13,9 @@ export class AppComponent implements OnInit {
   constructor(private dialog: MatDialog) {
 
   }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
