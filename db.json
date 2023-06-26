@@ -1,0 +1,25 @@
+{
+  "addEmployee": [
+    {
+      "firstName": "Gowtham",
+      "lastName": "Ilango",
+      "phone": 9393909049,
+      "address": "ds",
+      "eMail": "g@gmail.com",
+      "gender": "male",
+      "date": "2023-06-21T18:30:00.000Z",
+      "employeeStatus": "relieved",
+      "id": 1
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
