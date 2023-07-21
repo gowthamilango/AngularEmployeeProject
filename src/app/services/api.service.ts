@@ -6,21 +6,23 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
 
+  baseURL = "http://localhost:9191/employee";
+
   constructor(private http: HttpClient) { }
 
   postEmployee(data: any) {
-    return this.http.post<any>("http://localhost:3000/addEmployee/", data);
+    return this.http.post<any>(this.baseURL + "/add", data);
   }
 
   getEmployee() {
-    return this.http.get<any>("http://localhost:3000/addEmployee/");
+    return this.http.get<any>(this.baseURL + "/all");
   }
   putEmployee(data: any, id: number) {
-    return this.http.put<any>("http://localhost:3000/addEmployee/" + id, data);
+    return this.http.put<any>(this.baseURL + "/update/"+ id, data);
   }
 
   deleteEmployee(id: number) {
-    return this.http.delete<any>("http://localhost:3000/addEmployee/" + id);
+    return this.http.delete<any>(this.baseURL + "/delete/" + id);
   }
 
 }

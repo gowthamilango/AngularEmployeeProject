@@ -25,10 +25,10 @@ export class DialogComponent implements OnInit {
       lastName: ['', Validators.required],
       phone: ['', Validators.required],
       address: ['', Validators.required],
-      eMail: ['', Validators.required],
+      email: ['', Validators.required],
       gender: ['', Validators.required],
-      date: ['', Validators.required],
-      employeeStatus: ['', Validators.required]
+      joiningDate: ['', Validators.required],
+      status: ['', Validators.required]
 
     })
 
@@ -38,10 +38,10 @@ export class DialogComponent implements OnInit {
       this.createEmployeeForm.controls['lastName'].setValue(this.editData.lastName);
       this.createEmployeeForm.controls['phone'].setValue(this.editData.phone);
       this.createEmployeeForm.controls['address'].setValue(this.editData.address);
-      this.createEmployeeForm.controls['eMail'].setValue(this.editData.eMail);
+      this.createEmployeeForm.controls['email'].setValue(this.editData.email);
       this.createEmployeeForm.controls['gender'].setValue(this.editData.gender);
-      this.createEmployeeForm.controls['date'].setValue(this.editData.date);
-      this.createEmployeeForm.controls['employeeStatus'].setValue(this.editData.employeeStatus);
+      this.createEmployeeForm.controls['joiningDate'].setValue(this.editData.joiningDate);
+      this.createEmployeeForm.controls['status'].setValue(this.editData.status);
     }
   }
 
@@ -51,12 +51,12 @@ export class DialogComponent implements OnInit {
         this.api.postEmployee(this.createEmployeeForm.value)
           .subscribe({
             next: (res) => {
-              alert("Employee added successfully")
+              console.log("Employee added successfully")
               this.createEmployeeForm.reset();
               this.dialogRef.close(true);
             },
             error: () => {
-              alert("Error while creating the employee")
+              console.log("Error while creating the employee")
               this.dialogRef.close(false);
             }
           })
@@ -71,12 +71,12 @@ export class DialogComponent implements OnInit {
     this.api.putEmployee(this.createEmployeeForm.value, this.editData.id)
       .subscribe({
         next: (res) => {
-          alert("Employee updated successfully");
+          console.log("Employee updated successfully");
           this.createEmployeeForm.reset();
           this.dialogRef.close('update');
         },
         error: () => {
-          alert("Error while updating")
+          console.log("Error while updating")
         }
       })
   }

@@ -15,7 +15,7 @@ import { MatSort } from '@angular/material/sort';
 export class EmployeeComponentComponent {
 
   dataSource!: MatTableDataSource<any>;
-  displayedColumns: string[] = ['firstName', 'lastName', 'phone', 'address', 'eMail', 'gender', 'date', 'employeeStatus', 'action'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'phone', 'address', 'email', 'gender', 'joiningDate', 'status', 'action'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private dialog: MatDialog, private api: ApiService) {
@@ -49,18 +49,19 @@ export class EmployeeComponentComponent {
     });
   }
 
-  deleteEmployee(id:number){
+  deleteEmployee(id: number) {
     this.api.deleteEmployee(id)
-    .subscribe({
-      next:(res)=>{
-        alert("Employee deleted sucessfully");
-        this.getAllEmployees();
-      },
-      error:()=>{
-        alert("Error while deleting the employee")
-      }
-    })
-    
+      .subscribe({
+        next: (res) => {
+          console.log(res.status);
+          console.log("Employee deleted sucessfully");
+          this.getAllEmployees();
+        },
+        error: (err) => {
+          console.log("Error while deleting the employee")
+        }
+      })
+
   }
 
   applyFilter(event: Event) {
@@ -81,7 +82,7 @@ export class EmployeeComponentComponent {
           this.dataSource.sort = this.sort;
         },
         error: (err) => {
-          alert("Error while fetching!!!")
+          console.log("Error while fetching!!!")
         }
       })
   }
